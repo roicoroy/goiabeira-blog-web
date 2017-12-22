@@ -1,0 +1,54 @@
+<!-- <ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-title>{{"Settings" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header> -->
+
+<ion-content>
+    <div class="login">
+        <ion-row>
+            <img class="img" [src]="url"><br>
+        </ion-row>
+        <ion-row>
+            <input type="file" name="file" id="file" class="inputfile"
+                   (change)="readUrl($event)">
+            <label for="file" class="upload">
+                <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+            </label>
+        </ion-row>
+        <p class="name">{{user.name}}</p>
+    </div>
+    <ion-list>
+        <ion-item class="select-item">
+            <ion-label>{{"Language:" |translate }}</ion-label>
+            <ion-select [(ngModel)]="value" (ionChange)="changeLanguage()">
+                <ion-option *ngFor="let option of options" value="{{option.value}}"> {{option.language }}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <ion-list>
+            <!--card no-->
+            <ion-item>
+                <ion-label>{{"User Name:" | translate}}</ion-label>
+                <ion-input type="text" name="name" id="name" placeholder="{{'name' | translate}}"
+                           [(ngModel)]="user.name" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>{{"Email:" | translate}}</ion-label>
+                <ion-input type="email" name="email" id="email" placeholder="{{'email' | translate}}"
+                           [(ngModel)]="user.email" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>{{"Mobile Number:" | translate}}</ion-label>
+                <ion-input type="text" name="mobileNo" id="mobileNo" placeholder="mobile number"
+                           [(ngModel)]="user.mobileNo" required></ion-input>
+            </ion-item>
+            
+        </ion-list>
+        <!--button-->
+        <button class="login-btn" ion-button type="submit" [disabled]="!f.valid">{{"Save" | translate}}</button>
+    </form>
+
+</ion-content>
